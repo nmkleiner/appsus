@@ -42,7 +42,7 @@ function makeLorem(length) {
     var randStr = '';
     while (randStr.length < length) {
         var wordLength = getRandomInt(3, 6);
-        var word = createWord(wordLength);
+        var word = _createWord(wordLength);
 
         if (Math.random() > 0.9) word += ',';
 
@@ -52,4 +52,20 @@ function makeLorem(length) {
     randStr = randStr[0].toUpperCase() + randStr.substr(1)
 
     return randStr;
+}
+
+function _createWord(length) {
+    var word = '';
+    while (word.length < length) {
+        var randChar = _getRandChar();
+        word += randChar;
+    }
+
+    return word;
+}
+
+function _getRandChar() {
+    var LETTERS = 'abcdefghijklmnopqrstuvwxyz';
+    var randIndex = parseInt(Math.random() * LETTERS.length)
+    return LETTERS.charAt(randIndex);
 }

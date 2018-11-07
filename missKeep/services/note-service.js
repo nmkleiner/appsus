@@ -1,5 +1,3 @@
-'use strict'
-
 import storageService from '../../mainservices/storage.service.js'
 import utilService from '../../mainservices/util.service.js'
 
@@ -24,10 +22,7 @@ function query(filter = null) {
             else return notes.filter(note => 
                             note.vendor.toUpperCase().includes(filter.byTitle.toUpperCase()))
         })
-}
-
-var notes = query();
-console.log('Notes',notes); 
+} 
 
 function getById(noteId) {
     return storageService.load(KEY)

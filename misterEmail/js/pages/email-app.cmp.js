@@ -7,7 +7,7 @@ import emailDetails from '../cmps/email-details.cmp.js'
 // import emailFilter from '../cmps/email-filter.cmp.js'
 // import emailCompose from '../cmps/email-compose.cmp.js'
 // import emailStatus from '../cmps/email-status.cmp.js'
-// import { emailService } from "../services/email.service.js";
+import emailService from "../services/email.service.js";
 
 export default {
   template: `
@@ -55,6 +55,7 @@ export default {
   },
   created() {
     // get from email service
+    ema
   },
   methods: {
     backToAppsus() {

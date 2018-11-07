@@ -1,12 +1,18 @@
-
-* {
-    box-sizing: border-box;
+.note-container {
+    /* display: inline-flex; */
+    width: 200px;
+    height: 100px;
+    background-color: beige;
+    border: gray 0.5pt solid;
+    border-radius: 5px;
+    margin: 5px;
+    cursor: pointer;
+    transition-timing-function: linear;
+    transition: all 2s ease;
 }
 
-html, body {
-    margin: 0;
-}
-
-body {
-    background-color: red;
+.note-container:hover {
+    transform: scale(1.1, 1.1);
+    transition-timing-function: linear;
+    transition: all 2s ease;
 }

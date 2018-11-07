@@ -1,7 +1,14 @@
 'use strict'
 
-import strorageService from '../../mainservices/storage.service'
-import utilService from '../../mainservices/util.service'
+import storageService from '../../mainservices/storage.service.js'
+import utilService from '../../mainservices/util.service.js'
+
+export default {
+    query,
+    getById,
+    deleteNote,
+    saveNote
+}
 
 const KEY = 'notesAppKey';
 
@@ -18,6 +25,9 @@ function query(filter = null) {
                             note.vendor.toUpperCase().includes(filter.byTitle.toUpperCase()))
         })
 }
+
+var notes = query();
+console.log('Notes',notes); 
 
 function getById(noteId) {
     return storageService.load(KEY)
@@ -49,13 +59,6 @@ function saveNote(note) {
             }
             return storageService.store(KEY, notes);
         });
-}
-
-export default {
-    query,
-    getById,
-    deleteNote,
-    saveNote
 }
 
 function createInitialNotes() {

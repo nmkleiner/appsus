@@ -1,7 +1,7 @@
 import noteService from '../../missKeep/services/note-service.js'
 
-import noteList from '../../missKeep/cmps/'
-import noteFilter from '../../missKeep/cmps'
+import noteList from '../../missKeep/cmps/note-list.js'
+import noteFilter from '../../missKeep/cmps/note-filter.js'
 
 export default {
     template: `

@@ -1,3 +1,11 @@
+'use strict'
+
+export default {
+    getRandomInt,
+    makeId,
+    makeLorem,
+    getCurrency
+}
 
 
 function getRandomInt(min, max) {
@@ -29,9 +37,19 @@ function getCurrency(currencyCode) {
     }
 }
 
-export default {
-    getRandomInt,
-    makeId,
-    getCurrency
-}
+function makeLorem(length) {
 
+    var randStr = '';
+    while (randStr.length < length) {
+        var wordLength = getRandomInt(3, 6);
+        var word = createWord(wordLength);
+
+        if (Math.random() > 0.9) word += ',';
+
+        randStr += word + ' ';
+    }
+    randStr = randStr.substring(0, length);
+    randStr = randStr[0].toUpperCase() + randStr.substr(1)
+
+    return randStr;
+}

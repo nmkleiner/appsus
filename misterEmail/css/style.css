@@ -1,12 +1,4 @@
-
-* {
-    box-sizing: border-box;
-}
-
-html, body {
-    margin: 0;
-}
-
-body {
-    background-color: red;
-}
+@import './email-preview.css';
+@import './email-details.css';
+@import './email-list.css';
+@import './email-app.css';

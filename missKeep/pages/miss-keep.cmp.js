@@ -1,7 +1,7 @@
-import noteService from '../../missKeep/services/note-service.js'
+import noteService from '../services/note-service.js'
 
-import noteList from '../../missKeep/cmps/note-list.js'
-import noteFilter from '../../missKeep/cmps/note-filter.js'
+import noteList from './note-list.cmp.js'
+import noteFilter from '../cmps/note-filter.cmp.js'
 
 export default {
     template: `
@@ -23,7 +23,7 @@ export default {
     },
     methods: {
         setFilter(filter) {
-            noteService.query.(filter)
+            noteService.query(filter)
             .then(notes => this.notes = notes)
         }
     },

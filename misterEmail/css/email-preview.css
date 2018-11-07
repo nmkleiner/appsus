@@ -2,6 +2,37 @@
 
 
 .email-preview {
-    background-color: whitesmoke;
+    background-color: gray;
+    padding: 5px 10px;
+    border-bottom: 3px solid transparent;
+    transition: 0.3s;
+    /* width: 70%; */
+    cursor: pointer;
+    font-weight: bold;
+}
+.email-preview .btn{
+    border-radius: 50%;
 }
 
+.email-preview:hover {
+    border-bottom: 3px solid orangered;
+    padding: 10px; 
+}
+
+.email-preview .delete{
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+
+.email-preview:hover .delete {
+    visibility: visible;
+    opacity: 1
+}
+
+
+.read-email {
+    background-color: whitesmoke;
+    font-weight: normal;
+}

@@ -4,7 +4,7 @@ export default {
     props: ['email'],
     template: `
     <section class="email-details">
-        {{email.subject}}<br> {{email.body}}
+       subject: {{email.subject}}<br><br> {{email.body}}
     </section>
     `,
     

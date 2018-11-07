@@ -1,0 +1,21 @@
+.email-compose {
+    width: 90%;
+    margin: 0 auto;
+    background-color: black;
+    padding: 20px;
+}
+
+.text-container {
+    margin: 20px 0;
+}
+
+.text-input {
+    padding: 10px;
+    width: 100%;
+}
+.textarea {
+    padding: 10px;
+    width: 100%;
+}
+    
+

@@ -13,7 +13,7 @@ function query(filter = null) {
                 cars = createInitialCars();
                 storageService.store(KEY, cars);
             }
-            console.log('Cars: ', cars);
+            // console.log('Cars: ', cars);
             if (filter === null) return cars;
             else return cars.filter(car => 
                             car.vendor.toUpperCase().includes(filter.byVendor.toUpperCase()))

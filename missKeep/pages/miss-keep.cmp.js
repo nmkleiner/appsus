@@ -1,26 +1,22 @@
-import noteService from "../../missKeep/services/note-service.js";
-import eventBus, { Back_TO_APPSUS } from "/mainservices/event-bus.service.js";
+import noteService from "../services/note-service.js";
 
-import noteList from "../../missKeep/cmps/note-list.js";
-import noteFilter from "../../missKeep/cmps/note-filter.js";
+import noteList from "./note-list.cmp.js";
+import noteFilter from "../cmps/note-filter.cmp.js";
+import eventBus, { Back_TO_APPSUS } from "/mainservices/event-bus.service.js";
 
 export default {
   template: `
         <section class="note">
             <h1>Miss Keep</h1>
 
-
-
             <header>
-          <router-link to="/">
-            <div class="btn btn-sm btn-dark" @click="backToAppsus">
-              <i class="fas fa-arrow-circle-left"></i>
-            </div>
-          </router-link>
-        </header>
-
-
-
+                <router-link to="/">
+                    <div class="btn btn-sm btn-dark" @click="backToAppsus">
+                        <i class="fas fa-arrow-circle-left"></i>
+                    </div>
+                </router-link>
+            </header>
+            
             <router-link to="/note/edit">New Note</router-link> 
             <note-filter @filtered="setFilter"></note-filter>
             <note-list :notes="notes"></note-list>

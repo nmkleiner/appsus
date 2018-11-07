@@ -13,17 +13,18 @@
     <div id="app">
         <header>
             <!-- <router-link>missKeep</router-link> -->
-            <router-link to="/email">
-                <button v-if="isMainPage" @click="isMainPage = !isMainPage">
-                    misterEmail
-                </button>
-            </router-link>
+            <button v-if="isMainPage" @click="isMainPage = !isMainPage">
+                <router-link to="/email">misterEmail</router-link>
+                <router-link to="/note">missKeep</router-link>
+
+            </button>
         </header>
         <router-view></router-view>
     </div>
 
     <script src="libs/vue.js"></script>
     <script src="libs/vue-router.js"></script>
+    <script src="libs/sweetalert.js"></script>
     <script type="module" src="js/main.js"></script>
 </body>
 </html>

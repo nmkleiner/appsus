@@ -17,10 +17,9 @@ function query(filter = null) {
                 notes = createInitialNotes();
                 storageService.store(KEY, notes);
             }
-            console.log('Notes: ', notes);
             if (filter === null) return notes;
             else return notes.filter(note => 
-                            note.vendor.toUpperCase().includes(filter.byTitle.toUpperCase()))
+                note.text.toUpperCase().includes(filter.byWord.toUpperCase()));
         })
 } 
 
@@ -60,8 +59,9 @@ function createInitialNotes() {
     let notes = [];
     for (var i=0; i<10; i++){
         notes.push({
-            noteId: utilService.makeId(),
-            noteTxt: utilService.makeLorem(10) 
+            id: utilService.makeId(),
+            text: utilService.makeLorem(10),
+            type: 'text'
         })
     }
     return notes;

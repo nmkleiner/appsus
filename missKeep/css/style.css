@@ -1,18 +1,75 @@
+body {
+    background-image: url('../../img/background.jpg');
+}
+
 .note-container {
-    /* display: inline-flex; */
-    width: 200px;
-    height: 100px;
+    max-width: 33vw;
     background-color: beige;
     border: gray 0.5pt solid;
     border-radius: 5px;
-    margin: 5px;
+    margin: 10px;
+    padding: 6px;
     cursor: pointer;
     transition-timing-function: linear;
     transition: all 2s ease;
+    overflow: hidden;
+    break-inside: avoid;
 }
 
 .note-container:hover {
     transform: scale(1.1, 1.1);
     transition-timing-function: linear;
     transition: all 2s ease;
+}
+
+.delete-btn {
+    color: red;
+    margin-right: 5px;
+    float: right;
+    text-align: right;
+}
+
+.pin-to-top {
+    color: green;
+    margin-right: 0px;
+    float: right;
+    text-align: right;
+}
+
+.edit-icons {
+    font-size: 1.2em;
+    padding: 10px;
+    color: rgb(0, 56, 139);
+    cursor: pointer;
+
+}
+
+.note-img {
+    margin: 0 auto;
+}
+
+.note-img img {
+    object-fit: contain;
+    max-width: 90%;
+    border: gray 0.5pt solid;
+    border-radius: 5px;
+    /* margin: 20px; */
+}
+
+.note-controls-conatiner * {
+    padding: 3px;
+    margin: 5px 5px;
+    align-items: center;
+}
+
+.notes-list {
+    column-count: 3;
+    column-rule-width: 1px;
+}
+
+textarea {
+    border: gray 0.5pt solid;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px;
 }

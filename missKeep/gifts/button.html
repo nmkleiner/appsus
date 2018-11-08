@@ -1,0 +1,16 @@
+
+<button type="button" class="btn btn-md btn-dark" 
+            @click="fontSize--">
+            <i class="fas fa-font fa-sm"></i>
+        </button>
+        <button type="button" class="btn btn-md btn-dark" 
+            @click="fontSize++">
+          <i class="fas fa-font fa-lg"></i>
+</button>
+
+
+
+<div class="text-container" :style="{backgroundColor : prefs.backgroundColor,
+    color: prefs.color,
+    fontSize: fontSize +'px'
+   }">

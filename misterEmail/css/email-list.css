@@ -1,5 +1,13 @@
 .email-list {
     overflow-y: scroll;
-    border: 5px solid black;
-    border-radius: 20px 0 0 20px  ;
+    border: 2px solid black;
+    border-radius: 20px 0 0 20px;
+}
+
+@media (min-width: 768px) {
+    .email-list {
+        border: 5px solid black;
+        /* overflow-y: auto; */
+    }
+
 }

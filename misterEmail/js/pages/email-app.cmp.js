@@ -3,6 +3,7 @@ import eventBus, { Back_TO_APPSUS, APP_CREATED,  EMAIL_DELETED, EMAIL_SENT, EMAI
 import emailList from "../cmps/email-list.cmp.js";
 import emailDetails from "../cmps/email-details.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";
+import emailSort from "../cmps/email-sort.cmp.js";
 import emailStatus from "../cmps/email-status.cmp.js";
 import emailService from "../services/email.service.js";
 
@@ -25,6 +26,7 @@ export default {
         </header>
         <div class="sub-header d-flex">
           <email-filter @filtered="setFilter"></email-filter>
+          <email-sort @subject-sorted="sortSubject" @time-sorted="sortTime"></email-sort>
           <div class="button btn-dark d-flex align-items-center">
             <router-link to="/compose">
                 <button class="btn btn-sm btn-danger">
@@ -35,35 +37,24 @@ export default {
         </div>
 
         <div class="list-details-container d-flex">
-          <div class="side-container d-flex flex-column">
-
+          <div class="side-container d-flex flex-column-reverse flex-md-column">
             <email-list @email-selected="selectEmail" :emails="emails"></email-list>
             <email-status v-if="emails.length"></email-status>
           </div>
           
           <email-details :email="selectedEmail"></email-details>
         </div>
-        
-        <footer>
-        </footer>
-
-          
-          <!-- <keep-alive>
-            <email-compose></email-compose>
-          </keep-alive> -->
-
     </section>
     `,
   data() {
     return {
-      // emails: null,
       emails: [
         { subject: "1", body: "12oasdnfoanfoadnf", isRead: false, timeSent: null },
         { subject: "2", body: "23adsfadfadsfadf", isRead: true, timeSent: null }
       ],
       filter: null,
       selectedEmail: { subject: "1", body: "12oasdnfoanfoadnf", isRead: false },
-
+      sortedBy: 'time'
     };
   },
   methods: {
@@ -78,6 +69,36 @@ export default {
         this.filter = filter
         this.emails = emails;
       });
+    },
+    sortTime() {
+      if (this.sortedBy !== 'time') {
+        this.sortNew()
+        this.sortedBy = 'time'
+      }
+      else {
+        this.emails.reverse()
+      }
+    },
+    sortNew() {
+      this.emails.sort((email1,email2) => email1.timeSent - email2.timeSent).reverse()
+    },
+    sortSubject() {
+      if (this.sortedBy !== 'subject') {
+        this.sortABC()
+        this.sortedBy = 'subject'
+      }
+      else {
+        this.emails.reverse()
+      }
+    },
+    sortABC() {
+      this.emails.sort((email1, email2) => {
+        var subj1 = email1.subject.toLowerCase();
+        var subj2 = email2.subject.toLowerCase();
+        if (subj1 < subj2) return -1;
+        if (subj1 > subj2) return 1;
+        return 0;
+    }); 
     }
   },
   created() {
@@ -86,6 +107,7 @@ export default {
     var emails = emailService.query();
     emails.then(emails => {
       this.emails = emails;
+      this.sortNew()
       this.selectedEmail = this.emails[0];
     });
 
@@ -133,6 +155,7 @@ export default {
     emailList,
     emailDetails,
     emailFilter,
+    emailSort,
     emailStatus
   }
 };

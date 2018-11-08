@@ -1,13 +1,8 @@
-.email-app {
-    height: 99vh;
-    /* background-color: orange; */
-}
 
 .email-app header {
     background-color: black;
     padding-bottom: 5px; 
     height: 5vh;
-    
 }
 
 .email-app .sub-header {
@@ -15,14 +10,53 @@
     background-color: orangered;
 }
 
+
 .list-details-container {
-    height: 89vh;
-}
-.side-container {
-    width: 20%;
-    transition: 0.9s;
+    
+    width: 100vw;
+    
 }
 
-.side-container:hover {
-    width: 70%;
+
+.side-container {
+    width: 100%;
+}
+
+@media (min-width: 769px) {
+    .email-app {
+        height: 99vh;
+    }
+    .side-container {
+        width: 70%;
+    }
+    .list-details-container {
+        height: 89vh;
+        width: 100vw;
+        
+    }
+}
+
+
+
+
+::-webkit-scrollbar {
+    width:5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 5px;
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: orange; 
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: orangered; 
 }

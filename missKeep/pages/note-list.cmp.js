@@ -1,19 +1,16 @@
-import noteService from "../services/note-service.js";
+import noteImg from '../cmps/note-img.cmp.js'
+import noteService from '../services/note-service.js'
+
 
 export default {
   props: ["notes"],
   template: `
-        <section class="note-list flex flex-wrap">
-            <div v-for="note in notes">
-                    <div class="note-container" @click="editNote(note.id)">
+        <section class="notes-list">
+            <div v-for="note in notes" class="note-container" @click="editNote(note.id)">
+                        <i class="pin-to-top fas fa-thumbtack" title="pin to top"  @click.stop="pinToTop(note)"></i>
                         <i class=" delete-btn far fa-trash-alt" @click.stop="deleteNote(note.id)"></i>
                         {{note.text}}
-                    </div>
-                    <div class="flex space-around">
-                    <!-- <button @click="deleteNote(note.id)">Delete</button> -->
-                        <!-- <router-link :to="'/note/'+note.id">Delete</router-link>
-                        <router-link :to="'/note/edit/'+note.id">Edit</router-link> -->
-                    </div>
+                        <note-img :img="note.image"></note-img>
             </div>
         
         </section>
@@ -36,6 +33,12 @@ export default {
             
             }
           })
+    },
+    pinToTop(note) {
+        this.$emit('note-pinned',note);
     }
+  },
+  components: {
+      noteImg
   }
 }

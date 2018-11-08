@@ -16,10 +16,15 @@ export default {
                     </div>
                 </router-link>
             </header>
-            
-            <router-link to="/note/edit">New Note</router-link> 
-            <note-filter @filtered="setFilter"></note-filter>
-            <note-list :notes="notes" @note-deleted="noteDeleted"></note-list>
+            <div class="note-controls-conatiner flex">
+              <note-filter @filtered="setFilter"></note-filter>
+              <router-link to="/note/edit">
+              <button class="btn btn-mm btn-dark">New Note</button>
+            </router-link> 
+            </div>
+            <note-list :notes="notes" 
+            @note-deleted="noteDeleted" 
+            @note-pinned="notePinned"></note-list>
         </section>
     `,
   data() {
@@ -40,9 +45,12 @@ export default {
       eventBus.$emit(Back_TO_APPSUS);
     },
     noteDeleted(noteId) {
-      console.log("noteId", noteId);
       noteService.deleteNote(noteId).then((res) => {
-        console.log('res', res); 
+        this.notes = res;
+      });
+    },
+    notePinned(note) {
+      noteService.moveNoteToTop(note).then((res) => {
         this.notes = res;
       });
     }

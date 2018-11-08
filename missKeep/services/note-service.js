@@ -5,7 +5,8 @@ export default {
     query,
     getById,
     deleteNote,
-    saveNote
+    saveNote,
+    moveNoteToTop
 }
 
 const KEY = 'notesAppKey';
@@ -35,7 +36,6 @@ function deleteNote(noteId) {
         .then(notes => {
             var noteIdx = notes.findIndex(note => note.id === noteId);
             notes.splice(noteIdx, 1);
-            console.log('storageService.store(KEY, notes)',storageService.store(KEY, notes)); 
             storageService.store(KEY, notes);
             return notes
         })
@@ -70,6 +70,18 @@ function createInitialNotes() {
             prefs: {backColor: '', fontColor: '', font: '', fontSize: '', align: ''}
         })
     }
+    notes[0].image = "../../../img/test.jpg";
     return notes;
 }
 
+function moveNoteToTop(currNote) {
+    return storageService.load(KEY)
+    .then(notes => {
+        var noteIdx = notes.findIndex(note => note.id === currNote.id);
+        notes.splice(noteIdx,1);
+        notes.splice(0,0,currNote);
+        // notes.unshift(currNote);
+        storageService.store(KEY, notes);
+        return notes
+    })
+}

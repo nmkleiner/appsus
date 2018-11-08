@@ -5,7 +5,7 @@ import noteEdit from '../missKeep/pages/note-edit.cmp.js'
 // import about from './pages/about.js'
 // import car from './pages/car/car.js'
 // import carDetails from './pages/car/car-details.js'
-// import carEdit from './pages/car/car-edit.js'
+import emailDetails from '../misterEmail/js/cmps/email-details.cmp.js'
 
 
 const routes = [
@@ -13,9 +13,9 @@ const routes = [
     {path: '/email', component: emailApp},
     {path: '/compose', component: emailCompose},
     {path: '/note', component: keepApp},
+    {path: '/email/:emailId', component: emailDetails},
     {path: '/note/edit/:noteId?', component: noteEdit},
     // {path: '/car', component: car},
-    // {path: '/car/edit/:carId?', component: carEdit},
     // {path: '/car/:carId', component: carDetails},
   ];
  

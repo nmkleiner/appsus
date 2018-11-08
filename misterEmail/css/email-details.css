@@ -1,19 +1,30 @@
 .email-details {
-    width: 49vw;
-    flex-grow: 1;
+    width: 30vw;
     padding: 15px;
     border:5px solid black;
     border-radius:0 20px 0  20px  ;
-    /* height: 500px; */
+    transition: 1s;
+    flex-grow:1;
 } 
 
+
+.email-details:hover {
+    width: 100%;
+}
 
 .email-details .text-container {
     text-overflow: clip;
     overflow-wrap: break-word;
     
-    
     overflow-y: scroll;
     height: 90%;
+}
 
+
+.email-details.fullScreen {
+    width: 100%;
+}
+
+.email-details.fullScreen .text-container {
+    overflow-y: unset;
 }

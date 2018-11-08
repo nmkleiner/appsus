@@ -36,7 +36,6 @@ export default {
 
         <div class="list-details-container d-flex">
           <div class="side-container d-flex flex-column">
-
             <email-list @email-selected="selectEmail" :emails="emails"></email-list>
             <email-status v-if="emails.length"></email-status>
           </div>

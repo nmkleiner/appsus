@@ -1,11 +1,20 @@
+import emailService from "../services/email.service.js";
+import eventBus, { APP_CREATED } from "/mainservices/event-bus.service.js";
+
 "use strict";
 
 export default {
   props: ["email"],
   template: `
-    <section class="email-details">
+    <section class="email-details" :class="{fullScreen: isFullScreen}">
 
       <div class="btns-container">
+
+        <router-link v-if="isFullScreen" to="/email">
+          <button class="btn btn-dark">
+          <i class="fas fa-arrow-circle-left"></i>            
+          </button>
+        </router-link>
         
         <button class="btn btn-dark">
           <input type="color" v-model="prefs.color">
@@ -16,6 +25,13 @@ export default {
           <input type="color" v-model="prefs.backgroundColor">
           <i class="fas fa-palette"></i>
         </button>
+
+        <router-link v-if="!isFullScreen":to="'/email/' + email.id">
+          <button class="btn btn-dark">
+            <i class="fas fa-arrows-alt"></i>
+          </button>
+        </router-link>
+
 
       </div>
       
@@ -31,14 +47,28 @@ export default {
   computed: {
     timeToShow() {
       return moment(this.email.timeSent).format("MM/DD/YY hh:mm a");
-    }
+    },
   },
   data() {
     return {
       prefs: {
         backgroundColor: "#ffffff",
-        color: "#000000"
-      }
+        color: "#000000",
+      },
+      isFullScreen: false,
+      // email: {}
     };
+  },
+  
+  created() {
+    eventBus.$emit(APP_CREATED);
+
+    if (!this.email) {
+      this.isFullScreen = true;
+      const emailId = this.$route.params.emailId;
+      emailService.getById(emailId)
+      .then(email => this.email = email)
+    }
+
   }
-};
+}

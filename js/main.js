@@ -3,6 +3,7 @@
 import router from "./routes.js";
 import eventBus, { Back_TO_APPSUS, APP_CREATED } from "../mainservices/event-bus.service.js";
 import emailCompose from '/misterEmail/js/pages/email-compose.cmp.js'
+import emailDetails from '/misterEmail/js/cmps/email-details.cmp.js'
 
 // import userMsg from './cmps/user-msg.js'
 
@@ -11,7 +12,9 @@ new Vue({
   router,
   components: {
     // userMsg
-    emailCompose
+    emailCompose,
+    emailDetails
+
   },
   data() {
     return {

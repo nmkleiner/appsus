@@ -1,0 +1,42 @@
+<div class="font-size-group-item d-flex">
+        <span class="font-size-minus-group-btn">
+            <button type="button" class="font-nimus-btn btn btn-light btn-number" ondblclick="onFontSizeClick(-10)"
+                onclick="onFontSizeClick(-1)">
+                <i class="fas fa-font fa-sm"></i>
+            </button>
+        </span>
+        <span class="font-size-plus-group-btn">
+            <button type="button" class="font-plus-btn btn btn-light btn-number" ondblclick="onFontSizeClick(10)"
+                onclick="onFontSizeClick(1)">
+                <i class="fas fa-font fa-lg"></i>
+            </button>
+        </span>
+    </div>
+
+    methods: onFontSizeClick(fontSizeNum) {
+        changeFontSize(fontSizeNum, gCurrTxtLoc)
+        updateX(0)
+        updateY(0)
+        renderCanvas()
+    }
+
+
+    
+.font-size-group-item .btn:focus{
+    box-shadow: none;
+}
+
+.font-size-group-item .btn:active{
+    box-shadow: 0 5px #666;
+    transform: translateY(1px);
+}
+
+.font-nimus-btn{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.font-plus-btn{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}

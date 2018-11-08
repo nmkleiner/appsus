@@ -7,7 +7,6 @@
     background-color: black;
     padding-bottom: 5px; 
     height: 5vh;
-    
 }
 
 .email-app .sub-header {
@@ -15,14 +14,12 @@
     background-color: orangered;
 }
 
+
 .list-details-container {
     height: 89vh;
+    width: 100vw;
+
 }
 .side-container {
-    width: 20%;
-    transition: 0.9s;
-}
-
-.side-container:hover {
     width: 70%;
 }

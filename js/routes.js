@@ -1,5 +1,5 @@
 import emailApp from '../misterEmail/js/pages/email-app.cmp.js'
-import emailCompose from '/misterEmail/js/cmps/email-compose.cmp.js'
+import emailCompose from '/misterEmail/js/pages/email-compose.cmp.js'
 import keepApp from '../missKeep/pages/miss-keep.cmp.js'
 import noteEdit from '../missKeep/pages/note-edit.cmp.js'
 // import about from './pages/about.js'
@@ -18,7 +18,7 @@ const routes = [
     // {path: '/car/edit/:carId?', component: carEdit},
     // {path: '/car/:carId', component: carDetails},
   ];
-
+ 
 Vue.use(VueRouter);
 var myRouter = new VueRouter({routes})
 

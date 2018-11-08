@@ -2,7 +2,7 @@ import noteService from "../services/note-service.js";
 
 import noteList from "./note-list.cmp.js";
 import noteFilter from "../cmps/note-filter.cmp.js";
-import eventBus, { Back_TO_APPSUS } from "/mainservices/event-bus.service.js";
+import eventBus, { Back_TO_APPSUS,APP_CREATED } from "/mainservices/event-bus.service.js";
 
 export default {
   template: `
@@ -28,6 +28,8 @@ export default {
     };
   },
   created() {
+    eventBus.$emit(APP_CREATED)
+
     noteService.query().then(notes => (this.notes = notes));
   },
   methods: {

@@ -26,6 +26,15 @@ export default {
           <i class="fas fa-palette"></i>
         </button>
 
+        <button type="button" class="btn btn-md btn-dark" 
+            @click="fontSize--">
+            <i class="fas fa-font fa-sm"></i>
+        </button>
+        <button type="button" class="btn btn-md btn-dark" 
+            @click="fontSize++">
+          <i class="fas fa-font fa-lg"></i>
+        </button>
+
         <router-link v-if="!isFullScreen":to="'/email/' + email.id">
           <button class="btn btn-dark">
             <i class="fas fa-arrows-alt"></i>
@@ -35,7 +44,10 @@ export default {
 
       </div>
       
-      <div class="text-container" :style="{backgroundColor : prefs.backgroundColor, color: prefs.color}">
+      <div class="text-container" :style="{backgroundColor : prefs.backgroundColor,
+         color: prefs.color,
+         fontSize: fontSize +'px'
+        }">
         <span v-if="email.timeSent">Subject:</span>
          <span class="subject">{{email.subject}}</span><br>
          <span v-if="email.timeSent">Sent at: {{timeToShow}}</span>
@@ -55,6 +67,7 @@ export default {
         backgroundColor: "#ffffff",
         color: "#000000",
       },
+      fontSize: 16,
       isFullScreen: false,
       // email: {}
     };

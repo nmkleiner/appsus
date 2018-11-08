@@ -1,18 +1,34 @@
 .note-container {
-    /* display: inline-flex; */
     width: 200px;
-    height: 100px;
+    max-height: 300px;
     background-color: beige;
     border: gray 0.5pt solid;
     border-radius: 5px;
     margin: 5px;
+    padding: 6px;
     cursor: pointer;
     transition-timing-function: linear;
     transition: all 2s ease;
+    overflow: hidden;
 }
 
 .note-container:hover {
     transform: scale(1.1, 1.1);
     transition-timing-function: linear;
     transition: all 2s ease;
+}
+
+.delete-btn {
+    color: red;
+    margin-right: 0px;
+    float: right;
+    text-align: right;
+}
+
+.edit-icons {
+    font-size: 1.2em;
+    padding: 10px;
+    color: rgb(0, 56, 139);
+    cursor: pointer;
+
 }

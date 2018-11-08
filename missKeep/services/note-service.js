@@ -35,7 +35,9 @@ function deleteNote(noteId) {
         .then(notes => {
             var noteIdx = notes.findIndex(note => note.id === noteId);
             notes.splice(noteIdx, 1);
-            return storageService.store(KEY, notes);
+            console.log('storageService.store(KEY, notes)',storageService.store(KEY, notes)); 
+            storageService.store(KEY, notes);
+            return notes
         })
 }
 
@@ -61,7 +63,11 @@ function createInitialNotes() {
         notes.push({
             id: utilService.makeId(),
             text: utilService.makeLorem(10),
-            type: 'text'
+            type: 'text',
+            image: '',
+            todo: [],
+            audio: '',
+            prefs: {backColor: '', fontColor: '', font: '', fontSize: '', align: ''}
         })
     }
     return notes;

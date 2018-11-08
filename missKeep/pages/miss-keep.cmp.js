@@ -19,7 +19,7 @@ export default {
             
             <router-link to="/note/edit">New Note</router-link> 
             <note-filter @filtered="setFilter"></note-filter>
-            <note-list :notes="notes"></note-list>
+            <note-list :notes="notes" @note-deleted="noteDeleted"></note-list>
         </section>
     `,
   data() {
@@ -36,6 +36,13 @@ export default {
     },
     backToAppsus() {
       eventBus.$emit(Back_TO_APPSUS);
+    },
+    noteDeleted(noteId) {
+      console.log("noteId", noteId);
+      noteService.deleteNote(noteId).then((res) => {
+        console.log('res', res); 
+        this.notes = res;
+      });
     }
   },
 

@@ -6,10 +6,11 @@ export default {
         <section class="note-list flex flex-wrap">
             <div v-for="note in notes">
                     <div class="note-container" @click="editNote(note.id)">
+                        <i class=" delete-btn far fa-trash-alt" @click.stop="deleteNote(note.id)"></i>
                         {{note.text}}
                     </div>
                     <div class="flex space-around">
-                    <button @click="deleteNote(note.id)">Delete</button>
+                    <!-- <button @click="deleteNote(note.id)">Delete</button> -->
                         <!-- <router-link :to="'/note/'+note.id">Delete</router-link>
                         <router-link :to="'/note/edit/'+note.id">Edit</router-link> -->
                     </div>
@@ -31,12 +32,8 @@ export default {
           })
           .then((willDelete) => {
             if (willDelete) {
-              noteService.deleteNote(noteId)
-              .then(()=> {
-                    noteService.query()
-                swal("Your imaginary note has been deleted!", {
-                icon: "success",
-              })})
+                this.$emit('note-deleted', noteId)
+            
             }
           })
     }

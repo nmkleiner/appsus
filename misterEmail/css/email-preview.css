@@ -12,6 +12,7 @@
 }
 .email-preview .btn{
     border-radius: 50%;
+    z-index: 3;
 }
 
 .email-preview:hover {
@@ -25,11 +26,14 @@
     z-index: 1;
     position: absolute;
     left: 0;
-    width: 100vw;
+    width: 80vw;
     height: 50px;
 }
 
 @media (min-width: 769px) {
+    .open-details-div {
+        display: none;
+    }
     .email-preview .delete{
         visibility: hidden;
         opacity: 0;

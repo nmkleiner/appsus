@@ -1,22 +1,24 @@
 
 
-div {
-  margin:0 0 0.75em 0;
+label {
+    margin-left: 7px;
+    
 }
 
 input[type="radio"] {
     display:none;
 }
+
 input[type="radio"] + label {
-    color: #292321;
+    color: white;
     font-family:Arial, sans-serif;
     font-size:14px;
 }
 input[type="radio"] + label span {
     display:inline-block;
-    width:30px;
-    height:30px;
-    margin:-1px 4px 0 0;
+    width:20px;
+    height:20px;
+    /* margin:-1px 4px 0 0; */
     vertical-align:middle;
     cursor:pointer;
     -moz-border-radius:  50%;
@@ -30,7 +32,7 @@ input[type="radio"] + label span {
     }
     
     input[type="radio"]:checked + label span{
-        background-color: white;
+        background-color: darkcyan;
         border: 2px solid black;
 }
 

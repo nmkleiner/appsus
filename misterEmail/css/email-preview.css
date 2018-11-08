@@ -3,12 +3,12 @@
 
 .email-preview {
     background-color: gray;
-    padding: 5px 10px;
+    padding: 0px;
     border-bottom: 3px solid transparent;
     transition: 0.3s;
-    /* width: 70%; */
     cursor: pointer;
     font-weight: bold;
+    width: 100%
 }
 .email-preview .btn{
     border-radius: 50%;
@@ -16,7 +16,7 @@
 
 .email-preview:hover {
     border-bottom: 3px solid orangered;
-    padding: 10px; 
+    padding: 5px 0; 
 }
 
 .email-preview .delete{
@@ -35,4 +35,14 @@
 .read-email {
     background-color: whitesmoke;
     font-weight: normal;
+}
+
+.email-preview .text-container {
+    width: 75%;
+
+}
+.email-preview .subject {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

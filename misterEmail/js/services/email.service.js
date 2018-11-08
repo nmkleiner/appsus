@@ -14,7 +14,8 @@ function query(filter = null) {
     }
     if (filter === null) return emails;
     else {
-      if (filter.emailStatus === null) {
+      console.log(filter.emailStatus)
+      if (filter.emailStatus === 0) {
         return emails.filter(email => email.subject.toUpperCase().includes(filter.text.toUpperCase()))
         
       }
@@ -47,8 +48,8 @@ function saveEmail(email) {
       emails.splice(emailIdx, 1, email);
     } else {
       // Add
-      email.id = utilService.makeId();
-      emails.push(car);
+      email.id = utilService.makeId(7);
+      emails.push(email);
     }
     return storageService.store(KEY, emails);
   });
@@ -72,6 +73,7 @@ function _createEmails() {
     id: utilService.makeId(7),
     body: utilService.makeLorem(4000),
     subject,
-    isRead: Math.random() < 0.5
+    isRead: Math.random() < 0.5,
+    timeSent: Date.now() - utilService.getRandomInt(2000000,100000000) 
   }));
 }

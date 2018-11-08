@@ -1,0 +1,28 @@
+.email-app {
+    height: 99vh;
+    /* background-color: orange; */
+}
+
+.email-app header {
+    background-color: black;
+    padding-bottom: 5px; 
+    height: 5vh;
+    
+}
+
+.email-app .sub-header {
+    height: 5vh;
+    background-color: orangered;
+}
+
+.list-details-container {
+    height: 89vh;
+}
+.side-container {
+    width: 20%;
+    transition: 0.9s;
+}
+
+.side-container:hover {
+    width: 70%;
+}

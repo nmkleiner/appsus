@@ -10,11 +10,18 @@ export default {
             <h1>Miss Keep</h1>
 
             <header>
-                <router-link to="/">
-                    <div class="btn btn-sm btn-dark" @click="backToAppsus">
-                        <i class="fas fa-arrow-circle-left"></i>
-                    </div>
+              <div class="btns-container">
+                <router-link   to="/">
+                  <div class="btn btn-sm btn-dark" @click="backToAppsus">
+                    <i class="fas fa-arrow-circle-left"></i>
+                  </div>
                 </router-link>
+                <router-link   to="/email">
+                  <div class="btn btn-sm btn-dark" @click="backToAppsus">
+                    Go To Email
+                  </div>
+                </router-link>
+              </div>  
             </header>
             
             <router-link to="/note/edit">New Note</router-link> 

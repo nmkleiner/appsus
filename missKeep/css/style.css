@@ -1,5 +1,6 @@
-body {
+.note {
     background-image: url('../../img/background.jpg');
+    height: 100vh;
 }
 
 .note-container {
@@ -27,6 +28,15 @@ body {
     margin-right: 5px;
     float: right;
     text-align: right;
+    cursor: pointer;
+}
+
+.note-todos {
+    /* margin-right: 15px; */
+    margin: 10px;
+    border: gray 0.5pt solid;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 .pin-to-top {
@@ -36,12 +46,20 @@ body {
     text-align: right;
 }
 
+.move-btn {
+    color: green;
+    font-size: 1.2em;
+    margin-right: 20px;
+    float: right;
+    text-align: right; 
+    cursor: pointer;
+}
+
 .edit-icons {
     font-size: 1.2em;
     padding: 10px;
     color: rgb(0, 56, 139);
     cursor: pointer;
-
 }
 
 .note-img {
@@ -53,6 +71,7 @@ body {
     max-width: 90%;
     border: gray 0.5pt solid;
     border-radius: 5px;
+    text-align: center;
     /* margin: 20px; */
 }
 
@@ -65,6 +84,7 @@ body {
 .notes-list {
     column-count: 3;
     column-rule-width: 1px;
+    display: list-item;
 }
 
 textarea {
@@ -72,4 +92,23 @@ textarea {
     border-radius: 5px;
     padding: 5px;
     margin: 10px;
+}
+
+.input-container {
+    width: 15px;
+    height: 15px;
+    position: relative;
+}
+
+.input-el {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: pointer;
+}
+
+.input-container input {
+    opacity: 0;
 }

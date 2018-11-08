@@ -6,7 +6,9 @@ export default {
     getById,
     deleteNote,
     saveNote,
-    moveNoteToTop
+    moveNoteToTop,
+    deleteTodo,
+    moveTodo
 }
 
 const KEY = 'notesAppKey';
@@ -65,12 +67,13 @@ function createInitialNotes() {
             text: utilService.makeLorem(10),
             type: 'text',
             image: '',
-            todo: [],
+            todos: [],
             audio: '',
             prefs: {backColor: '', fontColor: '', font: '', fontSize: '', align: ''}
         })
     }
     notes[0].image = "../../../img/test.jpg";
+    notes[1].todos = ['call Muki', 'Email someone', 'Go home!'];
     return notes;
 }
 
@@ -84,4 +87,28 @@ function moveNoteToTop(currNote) {
         storageService.store(KEY, notes);
         return notes
     })
+}
+
+function deleteTodo (noteId, todoIdx) {
+    return getById(noteId)
+        .then(note => {
+            note.todos.splice(todoIdx, 1)
+            return saveNote(note).then(() => note)
+        })
+}
+
+function moveTodo (noteId, todoIdx, whereTo) {
+    return getById(noteId)
+        .then(note => {
+            var currTodo = note.todo[todoIdx];
+            if (whereTo==='up') {
+                note.todos.splice(todoIdx-1, 0, currTodo)
+                note.todos.splice(todoIdx+1, 1)
+            }
+            else {
+                note.todos.splice(todoIdx+1, 0, currTodo)
+                note.todos.splice(todoIdx-1, 1)
+            }
+            return saveNote(note).then(() => note)
+        })
 }

@@ -1,5 +1,6 @@
 import noteService from "../services/note-service.js";
 import noteImg from "../cmps/note-img.cmp.js";
+import noteTodosEdit from "../cmps/note-todos.edit.cmp.js";
 import busService, {
   USR_MSG_DISPLAY
 } from "../../mainservices/event-bus.service.js";
@@ -15,13 +16,24 @@ export default {
             </router-link>
         </header>
         <h1>{{(note.id)? 'Edit Note': 'Add Note'}}</h1>
-        <form  class="flex flex-column">
+        <form class="flex flex-column">
             <textarea v-model="note.text" ref="text" :rows="rows" cols="50" />
             <note-img v-if="note.image" :img="note.image"></note-img>
+            <note-todos-edit v-if="note.todos" :todos="note.todos"
+                @delete-todo="deleteTodo" @move-todo="moveTodo"></note-todos-edit>
             <div class="edit-icons flex space-around">
-              <i class="fas fa-fill" title="background color"></i>
-              <i class="fas fa-font" title="font"></i>
-              <i class="fas fa-palette" title="font color"></i>
+              <div class="input-container">
+                <i class="fas fa-fill input-el" title="background color"></i>
+                <input class="input-el" type="color">
+              </div>
+              <div class="input-container">
+                <i class="fas fa-font input-el" title="font"></i>
+                <input class="input-el" type="font">
+              </div>
+              <div class="input-container">
+                <i class="fas fa-palette input-el" title="font color"></i>
+                <input class="input-el" type="color">
+              </div>
               <i class="fas fa-sort" title="font size"></i>
               <i class="fas fa-list-ol" title="add a todo list"></i>
               <i class="far fa-images" title="add a picture" @click="getImage"></i>
@@ -36,7 +48,8 @@ export default {
     `,
   computed: {
     rows() {
-      if (this.note.image) return 2;
+      if (this.note.image || this.note.todos
+        && this.note.todos. length > 0) return 1;
       return 10;
     }
   },
@@ -69,12 +82,26 @@ export default {
     getImage() {
       this.isGetImg = true;
       // this.$refs.img.focus();
+    },
+    deleteTodo(todoIdx) {
+      // const noteIdx = noteService.getById(this.$route.params.noteId);
+      noteService.deleteTodo(this.note.id, todoIdx)
+      .then(note => {
+        this.note = note;
+      });
+    },
+    moveTodo(todoIdx, whereTo) {
+      noteService.deleteTodo(this.note.id, todoIdx, whereTo)
+      .then(note => {
+        this.note = note;
+      });
     }
   },
   mounted() {
     this.$refs.text.focus();
   },
   components: {
-    noteImg
+    noteImg,
+    noteTodosEdit
   }
 };

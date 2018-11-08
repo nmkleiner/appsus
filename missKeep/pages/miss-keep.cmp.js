@@ -29,9 +29,11 @@ export default {
               <button class="btn btn-mm btn-dark">New Note</button>
             </router-link> 
             </div>
-            <note-list :notes="notes" 
-            @note-deleted="noteDeleted" 
-            @note-pinned="notePinned"></note-list>
+            <div class="notes-list">
+              <note-list :notes="notes" 
+              @note-deleted="noteDeleted" 
+              @note-pinned="notePinned"></note-list>
+            </div>
         </section>
     `,
   data() {

@@ -1,11 +1,9 @@
 "use strict";
-import eventBus, { Back_TO_APPSUS } from "/mainservices/event-bus.service.js";
-import { EMAIL_DELETED } from "/mainservices/event-bus.service.js";
-
+import eventBus, { Back_TO_APPSUS,APP_CREATED,EMAIL_DELETED } from "/mainservices/event-bus.service.js";
 import emailList from "../cmps/email-list.cmp.js";
 import emailDetails from "../cmps/email-details.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";
-// import emailStatus from '../cmps/email-status.cmp.js'
+import emailStatus from '../cmps/email-status.cmp.js'
 import emailService from "../services/email.service.js";
 
 export default {
@@ -18,7 +16,7 @@ export default {
           </div>
         </router-link>
           
-          <router-link   to="/compose">
+          <router-link to="/compose">
             <button class="btn btn-sm btn-danger">Compose</button>
           </router-link>
 
@@ -29,19 +27,23 @@ export default {
         <email-filter @filtered="setFilter"></email-filter>
 
         <div class="list-details-container d-flex">
-          <email-list @email-selected="selectEmail" :emails="emails"></email-list>
+          <div class="side-container d-flex flex-column">
+
+            <email-list @email-selected="selectEmail" :emails="emails"></email-list>
+            <email-status :emails="emails"></email-status>
+          </div>
+          
           <email-details :email="selectedEmail"></email-details>
         </div>
-
+        
+        <footer>
+        </footer>
 
           
           <!-- <keep-alive>
             <email-compose></email-compose>
           </keep-alive> -->
 
-        <footer>
-          <!-- <email-status></email-status> -->
-        </footer>
     </section>
     `,
   data() {
@@ -69,6 +71,8 @@ export default {
     }
   },
   created() {
+    eventBus.$emit(APP_CREATED)
+
     var emails = emailService.query();
     emails.then(emails => {
       this.emails = emails;
@@ -95,8 +99,8 @@ export default {
   components: {
     emailList,
     emailDetails,
-    emailFilter
+    emailFilter,
     // emailCompose,
-    // emailStatus
+    emailStatus
   }
 };

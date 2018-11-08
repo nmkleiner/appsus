@@ -13,10 +13,12 @@
     <div id="app">
         <header>
             <!-- <router-link>missKeep</router-link> -->
-            <button v-if="isMainPage" @click="isMainPage = !isMainPage">
+            <button v-if="isMainPage">
                 <router-link to="/email">misterEmail</router-link>
+            </button>
+            
+            <button v-if="isMainPage">
                 <router-link to="/note">missKeep</router-link>
-
             </button>
         </header>
         <router-view></router-view>

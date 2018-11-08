@@ -8,8 +8,8 @@ export default {
     template: `
     <section class="email-list ">
         <div class="empty-message" v-if="emails.length===0">Congratulations, nothing here!</div>
-        <email-preview v-for="(currEmail,idx) in emails"
-         :email="currEmail" :idx="idx" :key="currEmail.id" @click.native="selectEmail(currEmail)"></email-preview>
+            <email-preview v-for="(currEmail,idx) in emails" 
+            :email="currEmail" :idx="idx" :key="currEmail.id" @click.native="selectEmail(currEmail)"></email-preview>
     </section>
     `,
     components: {

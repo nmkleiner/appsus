@@ -1,7 +1,16 @@
 
-.email-status {
-    width: 100%;
-    margin-top: 1px;
+    .email-status {
+        width: 100%;
+        /* margin-top: 1px; */
+        background-color: orangered;
+    }
+    
+    @media (min-width: 768px) {
+        .email-status {
+            margin-top: 1px;
+            background-color: white;
+    }
+    
 }
 
 .email-status .outer {

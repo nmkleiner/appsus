@@ -6,7 +6,7 @@ import eventBus, { APP_CREATED } from "/mainservices/event-bus.service.js";
 export default {
   props: ["email"],
   template: `
-    <section class="email-details" :class="{fullScreen: isFullScreen}">
+    <section class="email-details" :class="[{fullScreen: isFullScreen }]">
 
       <div class="btns-container">
 
@@ -17,12 +17,12 @@ export default {
         </router-link>
         
         <button class="btn btn-dark">
-          <input type="color" v-model="prefs.color">
+          <input class="color" type="color" v-model="prefs.color">
           <i class="fas fa-pencil-alt"></i>
         </button>
-
-        <button class="btn btn-dark">          
-          <input type="color" v-model="prefs.backgroundColor">
+  
+        <button class="btn btn-dark" >          
+          <input class="color" type="color" v-model="prefs.backgroundColor">
           <i class="fas fa-palette"></i>
         </button>
 
@@ -69,7 +69,6 @@ export default {
       },
       fontSize: 16,
       isFullScreen: false,
-      // email: {}
     };
   },
   

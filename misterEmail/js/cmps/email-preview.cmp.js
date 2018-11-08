@@ -12,9 +12,15 @@ export default {
         </div>
           <span>{{timeToShow}}</span>
         </div>    
-       
-        <div class="btn-container align-self-center">
+        <router-link :to="'/email/' + email.id">
+            <div class="open-details-div">
+              1
+            </div>
+          </router-link>
+          
 
+        <div class="btn-container align-self-center">
+          
             <button class="btn btn-sm btn-warning" 
             @click.stop="readEmail()">
                 <i v-if="isRead" title="Mark as unread" class="fas fa-envelope-open"></i>

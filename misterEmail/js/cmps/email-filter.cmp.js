@@ -21,8 +21,6 @@ export default {
             </div>
         </div>
         
-        
-
     </section>
     `,
     data() {
@@ -36,6 +34,6 @@ export default {
     methods: {
         emitFilter() {
             this.$emit('filtered', this.filter);
-        }
+        },
     } 
 }

@@ -1,5 +1,5 @@
 "use strict";
-import eventBus, { Back_TO_APPSUS, APP_CREATED,  EMAIL_DELETED, EMAIL_SENT, EMAIL_READ } from "/mainservices/event-bus.service.js";
+import eventBus, { Back_TO_APPSUS, APP_CREATED,  EMAIL_DELETED, EMAIL_SENT, EMAIL_READ } from "../../../mainservices/event-bus.service.js";
 import emailList from "../cmps/email-list.cmp.js";
 import emailDetails from "../cmps/email-details.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";

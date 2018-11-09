@@ -1,4 +1,4 @@
-import eventBus, { EMAIL_DELETED, EMAIL_READ } from "/mainservices/event-bus.service.js";
+import eventBus, { EMAIL_DELETED, EMAIL_READ } from "../../../mainservices/event-bus.service.js";
 
 
 export default {

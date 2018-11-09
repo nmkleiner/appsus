@@ -1,5 +1,5 @@
 import emailApp from '../misterEmail/js/pages/email-app.cmp.js'
-import emailCompose from '/misterEmail/js/pages/email-compose.cmp.js'
+import emailCompose from '../misterEmail/js/pages/email-compose.cmp.js'
 import keepApp from '../missKeep/pages/miss-keep.cmp.js'
 import noteEdit from '../missKeep/pages/note-edit.cmp.js'
 import emailDetails from '../misterEmail/js/cmps/email-details.cmp.js'

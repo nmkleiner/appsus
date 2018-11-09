@@ -1,5 +1,5 @@
 import emailService from "../services/email.service.js";
-import eventBus, { APP_CREATED } from "/mainservices/event-bus.service.js";
+import eventBus, { APP_CREATED } from "../../../mainservices/event-bus.service.js";
 
 "use strict";
 

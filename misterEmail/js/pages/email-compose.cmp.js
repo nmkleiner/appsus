@@ -1,5 +1,5 @@
 "use strict";
-import eventBus, { EMAIL_SENT } from "/mainservices/event-bus.service.js";
+import eventBus, { EMAIL_SENT } from "../../../mainservices/event-bus.service.js";
 
 export default {
   template: `

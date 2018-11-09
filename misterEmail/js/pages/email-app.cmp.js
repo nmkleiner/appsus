@@ -24,20 +24,18 @@ export default {
           </router-link>
         </div>  
         </header>
-        <div class="sub-header d-flex">
+        <div class="sub-header d-flex flex-wrap">
           <email-filter @filtered="setFilter"></email-filter>
           <email-sort @subject-sorted="sortSubject" @time-sorted="sortTime"></email-sort>
-          <div class="button btn-dark d-flex align-items-center">
             <router-link to="/compose">
-                <button class="btn btn-sm btn-danger">
-                    <i class="fas fa-plus"></i>
+                <button class="btn btn-md btn-danger ">
+                    <i class="fas fa-plus"></i>New
                 </button>
             </router-link>
-          </div>
         </div>
 
         <div class="list-details-container d-flex">
-          <div class="side-container d-flex flex-column-reverse flex-md-column">
+          <div class="side-container d-flex flex-column">
             <email-list @email-selected="selectEmail" :emails="emails"></email-list>
             <email-status v-if="emails.length"></email-status>
           </div>

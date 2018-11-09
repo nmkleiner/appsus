@@ -15,20 +15,28 @@
     z-index: 3;
 }
 
-.email-preview:hover {
-    border-bottom: 3px solid orangered;
-    padding: 0 20px 5px; 
-}
-
 .open-details-div {
     background-color: transparent;
-    opacity: 0.5;
     z-index: 1;
     position: absolute;
     left: 0;
-    width: 80vw;
+    width: 70vw;
     height: 50px;
 }
+@media (min-width: 500px) {
+    .open-details-div {
+        width: 77vw;
+    }
+}
+
+@media (min-width: 600px) {
+    .open-details-div {
+        width: 80vw;
+    }
+}
+
+
+
 
 @media (min-width: 769px) {
     .open-details-div {
@@ -43,6 +51,11 @@
     .email-preview:hover .delete {
         visibility: visible;
         opacity: 1
+    }
+    
+    .email-preview:hover {
+        border-bottom: 3px solid orangered;
+        padding: 0 20px 5px; 
     }
 
     

@@ -14,7 +14,6 @@ export default {
         </div>    
         <router-link :to="'/email/' + email.id">
             <div class="open-details-div">
-              1
             </div>
           </router-link>
           

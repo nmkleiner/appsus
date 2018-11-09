@@ -3,21 +3,19 @@
 export default {
     template: `
     <section class="email-filter d-flex align-items-center">
-
-        <input  v-model="filter.text" @input="emitFilter" type="text" placeholder="Search email">
+        <div class="btn btn-dark">
+            <input class="text-input" v-model="filter.text" @input="emitFilter" type="text" placeholder="Search">
+        </div>
         
-        <div class="button btn-dark d-flex align-items-center">
-            <div>
-                <input v-model="filter.emailStatus" @change="emitFilter" :value="0" type="radio" id="radio01" name="radio">
-                <label for="radio01"><span></span>All</label>
+        <div class="btn button-container d-flex align-items-center">
+            <div class="filter-btn btn-dark warning-color" @click="changeFilter(0)">
+                <span :class="{'filtered-text' : filter.emailStatus === 0}">All</span>
             </div>
-            <div>
-                <input v-model="filter.emailStatus" @change="emitFilter" :value="false" type="radio" id="radio02" name="radio">
-                <label for="radio02"><span></span>Unread</label>
+            <div class="filter-btn btn-dark" @click="changeFilter(false)">
+                <span :class="{'filtered-text' : filter.emailStatus === false}">Unread</span>  
             </div>
-            <div>
-                <input v-model="filter.emailStatus" @change="emitFilter" :value="true" type="radio" id="radio03" name="radio">
-                <label for="radio03"><span></span>Read</label>
+            <div class="filter-btn btn-dark" @click="changeFilter(true)">
+                <span :class="{'filtered-text' : filter.emailStatus}">Read</span>
             </div>
         </div>
         
@@ -26,7 +24,7 @@ export default {
     data() {
         return {
             filter: {
-                emailStatus: '0',
+                emailStatus: 0,
                 text: '',
             }
         }
@@ -35,5 +33,9 @@ export default {
         emitFilter() {
             this.$emit('filtered', this.filter);
         },
+        changeFilter(emailStatus) {
+            this.filter.emailStatus = emailStatus
+            this.emitFilter()
+        }
     } 
 }

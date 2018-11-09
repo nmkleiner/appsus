@@ -14,10 +14,13 @@ export default {
                 
             </li>
         </ol>
+
     </section>
     `,
   data() {
-    return {};
+    return {
+      isNewTodo: false
+    };
   },
   methods: {
     deleteTodo(todoIdx) {

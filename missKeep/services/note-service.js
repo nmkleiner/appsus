@@ -8,7 +8,8 @@ export default {
     saveNote,
     moveNoteToTop,
     deleteTodo,
-    moveTodo
+    moveTodo,
+    addTodo
 }
 
 const KEY = 'notesAppKey';
@@ -68,8 +69,14 @@ function createInitialNotes() {
             type: 'text',
             image: '',
             todos: [],
+            isTodos: false,
             audio: '',
-            prefs: {backColor: '', fontColor: '', font: '', fontSize: '', align: ''}
+            style: {
+                backgroundColor: '', 
+                fontFamily: '', 
+                color: '', 
+                fontSize: '', 
+                textAlign: ''}
         })
     }
     notes[0].image = "../../../img/test.jpg";
@@ -100,15 +107,23 @@ function deleteTodo (noteId, todoIdx) {
 function moveTodo (noteId, todoIdx, whereTo) {
     return getById(noteId)
         .then(note => {
-            var currTodo = note.todo[todoIdx];
+            var currTodo = note.todos[todoIdx];
             if (whereTo==='up') {
                 note.todos.splice(todoIdx-1, 0, currTodo)
                 note.todos.splice(todoIdx+1, 1)
             }
             else {
-                note.todos.splice(todoIdx+1, 0, currTodo)
-                note.todos.splice(todoIdx-1, 1)
+                note.todos.splice(todoIdx+2, 0, currTodo)
+                note.todos.splice(todoIdx, 1)
             }
             return saveNote(note).then(() => note)
         })
+}
+
+function addTodo(newTodo,noteId) {
+    return getById(noteId)
+    .then(note => {
+        note.todos.push(newTodo)
+        return saveNote(note).then(() => note);
+    })
 }

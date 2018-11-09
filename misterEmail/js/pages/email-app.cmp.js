@@ -1,5 +1,5 @@
 "use strict";
-import eventBus, { Back_TO_APPSUS, APP_CREATED,  EMAIL_DELETED, EMAIL_SENT, EMAIL_READ } from "/mainservices/event-bus.service.js";
+import eventBus, { Back_TO_APPSUS, APP_CREATED,  EMAIL_DELETED, EMAIL_SENT, EMAIL_READ } from "../../../mainservices/event-bus.service.js";
 import emailList from "../cmps/email-list.cmp.js";
 import emailDetails from "../cmps/email-details.cmp.js";
 import emailFilter from "../cmps/email-filter.cmp.js";
@@ -12,7 +12,7 @@ export default {
     <section class="email-app d-flex flex-column justify-content-center">
         <header class="d-flex justify-content-between">
         <div class="btns-container">
-          <router-link   to="/">
+          <router-link to="/">
               <div class="btn btn-sm btn-dark" @click="backToAppsus">
                 <i class="fas fa-arrow-circle-left"></i>
               </div>

@@ -1,6 +1,6 @@
 'use strict'
 import emailPreview from './email-preview.cmp.js'
-import eventBus, {  EMAIL_READ } from "/mainservices/event-bus.service.js";
+import eventBus, {  EMAIL_READ } from "../../../mainservices/event-bus.service.js";
 
 
 export default {

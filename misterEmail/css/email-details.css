@@ -3,9 +3,8 @@
     padding: 15px;
     border:5px solid black;
     border-radius:0 20px 20px 20px  ;
-    transition: 1s;
     flex-grow:1;
-    width: 100vw;
+    /* width: 100vw; */
 } 
 
 @media (min-width: 769px) {
@@ -15,9 +14,6 @@
     }
 }
 
-.email-details:hover {
-    width: 100%;
-}
 
 .email-details .color {
     opacity: 0;
@@ -28,6 +24,8 @@
     overflow-wrap: break-word;
     
     overflow-y: scroll;
+    scroll-behavior: smooth;
+
     height: 90%;
 }
 
@@ -40,4 +38,8 @@
 
 .email-details.fullScreen .text-container {
     overflow-y: unset;
+}
+
+.email-details .btn img {
+    width: 20px;
 }

@@ -2,13 +2,13 @@
 
 
 .email-preview {
-    background-color: gray;
-    padding: 0px;
-    border-bottom: 3px solid transparent;
+    background-color: whitesmoke;
     transition: 0.3s;
     cursor: pointer;
-    font-weight: bold;
-    width: 100%
+    font-weight: 800;
+    width: 100%;
+    padding: 0 20px;
+    border-bottom: 3px solid transparent;
 }
 .email-preview .btn{
     border-radius: 50%;
@@ -17,7 +17,7 @@
 
 .email-preview:hover {
     border-bottom: 3px solid orangered;
-    padding: 5px 0; 
+    padding: 0 20px 5px; 
 }
 
 .open-details-div {
@@ -52,8 +52,9 @@
 
 
 .read-email {
-    background-color: whitesmoke;
-    font-weight: normal;
+    font-weight: 600;
+    color: dimgray;
+
 }
 
 .email-preview .text-container {

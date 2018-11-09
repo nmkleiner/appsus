@@ -40,7 +40,6 @@ export default {
   },
   methods: {
     submitForm() {
-        swal("Email sent", "", "success");
         this.email.timeSent = Date.now()
       eventBus.$emit(EMAIL_SENT, this.email);
     }

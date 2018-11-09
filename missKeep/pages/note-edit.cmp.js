@@ -16,23 +16,21 @@ export default {
             </router-link>
         </header>
         <h1>{{(note.id)? 'Edit Note': 'Add Note'}}</h1>
+        </div>
         <form class="flex flex-column">
-            <textarea v-model="note.text" ref="text" :rows="rows" cols="50" />
+            <textarea v-model="note.text" ref="text" :rows="rows" cols="50"/>
             <note-img v-if="note.image" :img="note.image"></note-img>
-            <note-todos-edit v-if="note.todos" :todos="note.todos"
+            <note-todos-edit v-if="isTodos" :todos="note.todos"
                 @delete-todo="deleteTodo" @move-todo="moveTodo"></note-todos-edit>
             <div class="edit-icons flex space-around">
               <div class="input-container">
-                <i class="fas fa-fill input-el" title="background color"></i>
-                <input class="input-el" type="color">
+                <i class="fas fa-fill input-el"></i>
+                <input class="input-el" type="color" title="background color">
               </div>
+              <i class="fas fa-font" title="font"></i>
               <div class="input-container">
-                <i class="fas fa-font input-el" title="font"></i>
-                <input class="input-el" type="font">
-              </div>
-              <div class="input-container">
-                <i class="fas fa-palette input-el" title="font color"></i>
-                <input class="input-el" type="color">
+                <i class="fas fa-palette input-el"></i>
+                <input class="input-el" type="color" title="font color">
               </div>
               <i class="fas fa-sort" title="font size"></i>
               <i class="fas fa-list-ol" title="add a todo list"></i>
@@ -40,23 +38,33 @@ export default {
               <i class="fas fa-align-left" title="align left"></i>
               <i class="fas fa-align-right" title="align right"></i>
               <!-- <i class="far fa-file-audio"></i> -->
-              <i class="fas fa-save" @click="saveNote" title="save note"></i>
+              <i class="fas fa-check" @click="saveNote" title="save note"></i>
             </div>
-            <input v-if="isGetImg" v-model.lazy="note.image" type="text" ref="img" placeholder="Paste your picture url">
+            <input v-model.lazy="newTodo" @keyup.enter="addTodo(newTodo, note.id)" ref="newTodo" type="text" placeholder="Type a new Todo and press ENTER">
+
+            <input v-if="isGetImg" v-model.lazy="note.image" @keyup.enter="" type="text" ref="img" placeholder="Paste your picture url">
         </form>
     </section>
     `,
   computed: {
     rows() {
-      if (this.note.image || this.note.todos
-        && this.note.todos. length > 0) return 1;
+      if (this.note.image || (this.note.todos && this.note.todos.length > 0))
+        return 1;
       return 10;
+    },
+    isTodos() {
+      if (this.note.todos && this.note.todos.length > 0) return true;
     }
   },
   data() {
     return {
       isGetImg: false,
-      note: { text: "" }
+      note: { text: "" },
+      newTodo: ""
+      // styleObject: {
+      //   color: 'red',
+      //   backgroundColor: 'yellow'
+      // }
     };
   },
   created() {
@@ -81,20 +89,21 @@ export default {
     },
     getImage() {
       this.isGetImg = true;
-      // this.$refs.img.focus();
     },
     deleteTodo(todoIdx) {
       // const noteIdx = noteService.getById(this.$route.params.noteId);
-      noteService.deleteTodo(this.note.id, todoIdx)
-      .then(note => {
+      noteService.deleteTodo(this.note.id, todoIdx).then(note => {
         this.note = note;
       });
     },
     moveTodo(todoIdx, whereTo) {
-      noteService.deleteTodo(this.note.id, todoIdx, whereTo)
-      .then(note => {
+      noteService.moveTodo(this.note.id, todoIdx, whereTo).then(note => {
         this.note = note;
       });
+    },
+    addTodo(newTodo, noteId) {
+      noteService.addTodo(newTodo, noteId).then(note => (this.note = note));
+      this.$refs.newTodo.value = "";
     }
   },
   mounted() {

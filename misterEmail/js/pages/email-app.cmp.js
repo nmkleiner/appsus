@@ -12,7 +12,7 @@ export default {
     <section class="email-app d-flex flex-column justify-content-center">
         <header class="d-flex justify-content-between">
         <div class="btns-container">
-          <router-link   to="/">
+          <router-link to="/">
               <div class="btn btn-sm btn-dark" @click="backToAppsus">
                 <i class="fas fa-arrow-circle-left"></i>
               </div>

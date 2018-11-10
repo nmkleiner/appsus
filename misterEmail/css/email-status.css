@@ -1,12 +1,12 @@
 
     .email-status {
-        width: 100%;
-        /* margin-top: 1px; */
-        background-color: orangered;
+        display: none;
     }
     
     @media (min-width: 768px) {
         .email-status {
+            width: 100%;
+            display: block;
             margin-top: 1px;
             background-color: white;
     }

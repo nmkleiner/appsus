@@ -6,13 +6,17 @@
 }
 
 .email-app .sub-header {
-    height: 5vh;
-    /* background-color: orangered; */
+    height: 13vh;
+    margin: 1vh 0;
+    padding: 0 10px;
+    align-items: center;
 }
 
-
+.email-app .sub-header .btn:last-child{
+    justify-self: flex-end;
+}
 .list-details-container {
-    width: 100vw;
+    width: 100%;
 }
 
 
@@ -22,7 +26,7 @@
 
 @media (min-width: 769px) {
     .email-app {
-        height: 99vh;
+        height: 100vh;
     }
     .side-container {
         width: 50%;
@@ -31,7 +35,14 @@
         height: 89vh;
         width: 100vw;
     }
+
+    .email-app .sub-header {
+        height: 5vh;
+        margin: 1vh 0;
+        padding: 0 20px;
+    }
 }
+
 
 
 

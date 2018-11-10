@@ -32,7 +32,7 @@ input[type="radio"] + label span {
     }
     
     input[type="radio"]:checked + label span{
-        background-color: darkcyan;
+        background-color: white;
         border: 2px solid black;
 }
 

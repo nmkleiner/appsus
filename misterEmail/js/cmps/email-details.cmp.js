@@ -16,7 +16,7 @@ export default {
           </button>
         </router-link>
         
-        <button class="btn btn-dark">
+        <!-- <button class="btn btn-dark">
           <input class="color" type="color" v-model="prefs.color">
           <i class="fas fa-pencil-alt"></i>
         </button>
@@ -24,7 +24,7 @@ export default {
         <button class="btn btn-dark" >          
           <input class="color" type="color" v-model="prefs.backgroundColor">
           <i class="fas fa-palette"></i>
-        </button>
+        </button> -->
 
         <button type="button" class="btn btn-md btn-dark" 
             @click="fontSize--">
@@ -37,7 +37,6 @@ export default {
 
         <router-link v-if="!isFullScreen":to="'/email/' + email.id">
           <button class="btn btn-bright">
-            <!-- <i class="fas fa-arrows-alt"></i> -->
             <img src="../../misterEmail/img/fullScreen.png">
           </button>
         </router-link>

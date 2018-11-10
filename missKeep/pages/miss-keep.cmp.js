@@ -26,8 +26,8 @@ export default {
             <div class="note-controls-conatiner flex">
               <note-filter @filtered="setFilter"></note-filter>
               <router-link to="/note/edit">
-              <button class="btn btn-mm btn-dark">New Note</button>
-            </router-link> 
+                <button class="btn btn-mm btn-dark">New Note</button>
+              </router-link> 
             </div>
             <div class="notes-list">
               <note-list :notes="notes" 

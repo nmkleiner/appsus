@@ -78,11 +78,11 @@ function createInitialNotes() {
       todos: [],
       audio: "",
       style: {
-        backgroundColor: "",
-        fontFamily: "",
-        color: "",
-        fontSize: "",
-        textAlign: ""
+        backgroundColor: '#ffffff',
+        fontFamily: 'Calibri, sans-serif',
+        color: '#000000',
+        fontSize: '14px',
+        textAlign: 'left'
       }
     });
   }
@@ -101,26 +101,42 @@ function moveNoteToTop(currNote) {
   });
 }
 
-function deleteTodo(noteId, todoIdx) {
-  return getById(noteId).then(note => {
+function deleteTodo(note, todoIdx) {
     note.todos.splice(todoIdx, 1);
-    return saveNote(note).then(() => note);
-  });
+    return note;
 }
 
-function moveTodo(noteId, todoIdx, whereTo) {
-  return getById(noteId).then(note => {
-    var currTodo = note.todos[todoIdx];
-    if (whereTo === "up") {
-      note.todos.splice(todoIdx - 1, 0, currTodo);
-      note.todos.splice(todoIdx + 1, 1);
-    } else {
-      note.todos.splice(todoIdx + 2, 0, currTodo);
-      note.todos.splice(todoIdx, 1);
-    }
-    return saveNote(note).then(() => note);
-  });
-}
+function moveTodo(note, todoIdx, whereTo) {
+      var currTodo = note.todos[todoIdx];
+      if (whereTo === "up") {
+        note.todos.splice(todoIdx - 1, 0, currTodo);
+        note.todos.splice(todoIdx + 1, 1);
+      } else {
+        note.todos.splice(todoIdx + 2, 0, currTodo);
+        note.todos.splice(todoIdx, 1);
+      }
+      return note;
+  }
+
+//   function deleteTodo(noteId, todoIdx) {
+//     return getById(noteId).then(note => {
+//       note.todos.splice(todoIdx, 1);
+//       return saveNote(note).then(() => note);
+//     });
+//   }
+// function moveTodo(noteId, todoIdx, whereTo) {
+//   return getById(noteId).then(note => {
+//     var currTodo = note.todos[todoIdx];
+//     if (whereTo === "up") {
+//       note.todos.splice(todoIdx - 1, 0, currTodo);
+//       note.todos.splice(todoIdx + 1, 1);
+//     } else {
+//       note.todos.splice(todoIdx + 2, 0, currTodo);
+//       note.todos.splice(todoIdx, 1);
+//     }
+//     return saveNote(note).then(() => note);
+//   });
+// }
 
 function addTodo(newTodo, note) {
   if (!note.id) {

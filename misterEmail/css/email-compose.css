@@ -1,10 +1,9 @@
 .email-compose {
-    width: 90%;
-    margin: 0 auto;
+    width: 100%;
     background-color: black;
     padding: 20px;
     border-radius: 20px;
-    border: 5px solid white;
+    height: 90vh;
 }
 
 .email-compose .text-container {
@@ -13,11 +12,20 @@
 
 .text-input {
     padding: 10px;
-    width: 100%;
+    margin-left: 12px;
+    width: calc(100% - 24px);
 }
+
 .textarea {
     padding: 10px;
-    width: 100%;
+    width: calc(100% - 24px);
 }
-    
 
+@media (min-width: 789px) {
+    .email-compose {
+        width: 90%;
+        margin: 0 auto;
+        height: unset;
+    }
+    
+}

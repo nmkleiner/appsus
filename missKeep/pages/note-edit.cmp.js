@@ -33,14 +33,14 @@ export default {
                 <input class="input-el" type="color" title="font color">
               </div>
               <i class="fas fa-sort" title="font size"></i>
-              <i class="fas fa-list-ol" title="add a todo list"></i>
               <i class="far fa-images" title="add a picture" @click="getImage"></i>
               <i class="fas fa-align-left" title="align left"></i>
               <i class="fas fa-align-right" title="align right"></i>
               <!-- <i class="far fa-file-audio"></i> -->
               <i class="fas fa-check" @click="saveNote" title="save note"></i>
             </div>
-            <input v-model.lazy="newTodo" @keyup.enter="addTodo(newTodo, note.id)" ref="newTodo" type="text" placeholder="Type a new Todo and press ENTER">
+            <input v-model.lazy.trim="newTodo" @keyup.enter="addTodo(newTodo, note)" 
+            ref="newTodo" type="text" placeholder="Type a new Todo and press ENTER">
 
             <input v-if="isGetImg" v-model.lazy="note.image" @keyup.enter="" type="text" ref="img" placeholder="Paste your picture url">
         </form>
@@ -101,8 +101,10 @@ export default {
         this.note = note;
       });
     },
-    addTodo(newTodo, noteId) {
-      noteService.addTodo(newTodo, noteId).then(note => (this.note = note));
+    addTodo(newTodo, note) {
+      if (!this.newTodo) return;
+      this.note = noteService.addTodo(newTodo, note);
+      this.$router.push(`/note/edit/${note.id}`);
       this.$refs.newTodo.value = "";
     }
   },

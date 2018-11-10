@@ -53,7 +53,7 @@ export default {
             <div v-if="isGetImg">
               <input  v-model.lazy="note.image" @keyup.enter="" type="text" 
               ref="img" placeholder="Paste your picture url">
-              <input type="file">
+              <input type="file" @change="uploadFile($event)" value="myPic.jpg">
             </div>
         </form>
     </section>
@@ -87,11 +87,7 @@ export default {
     if (noteId) {
       noteService.getById(noteId).then(note => {
         this.note = note;
-        this.styleObject.backgroundColor = note.style.backgroundColor;
-        this.styleObject.fontFamily = note.style.fontFamily;
-        this.styleObject.color = note.style.color;
-        this.styleObject.fontSize = note.style.fontSize;
-        this.styleObject.textAlign = note.style.textAlign;
+        this.styleObject = note.style;
       });
     }
   },
@@ -125,6 +121,11 @@ export default {
     },
     saveStyle() {
       this.note.style = this.styleObject;
+    },
+    uploadFile(event){
+      let file = event.target.files[0];
+      let imageURL = URL.createObjectURL(file)
+      this.note.image = imageURL;
     }
   },
   mounted() {

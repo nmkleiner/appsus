@@ -1,6 +1,5 @@
 import noteImg from '../cmps/note-img.cmp.js'
 import noteTodos from '../cmps/note-todos.cmp.js'
-import noteService from '../services/note-service.js'
 
 
 export default {

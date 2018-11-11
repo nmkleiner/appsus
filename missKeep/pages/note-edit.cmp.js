@@ -18,31 +18,43 @@ export default {
         <h1>{{(note.id)? 'Edit Note': 'Add Note'}}</h1>
         </div>
         <form class="flex flex-column">
-            <textarea v-model="note.text" ref="text" :rows="rows" cols="50"/>
+            <textarea v-model="note.text" ref="text" :rows="rows" cols="50" :style="styleObject"/>
+
             <note-img v-if="note.image" :img="note.image"></note-img>
-            <note-todos-edit v-if="isTodos" :todos="note.todos"
+            
+            <note-todos-edit v-if="isTodos" :todos="note.todos" :style="styleObject"
                 @delete-todo="deleteTodo" @move-todo="moveTodo"></note-todos-edit>
+            
             <div class="edit-icons flex space-around">
               <div class="input-container">
                 <i class="fas fa-fill input-el"></i>
-                <input class="input-el" type="color" title="background color">
+                <input class="input-el" type="color" title="background color" 
+                  v-model="styleObject.backgroundColor">
               </div>
+
               <i class="fas fa-font" title="font"></i>
+              
               <div class="input-container">
                 <i class="fas fa-palette input-el"></i>
-                <input class="input-el" type="color" title="font color">
+                <input class="input-el" type="color" title="font color" v-model="styleObject.color">
               </div>
+              
               <i class="fas fa-sort" title="font size"></i>
+              
               <i class="far fa-images" title="add a picture" @click="getImage"></i>
-              <i class="fas fa-align-left" title="align left"></i>
-              <i class="fas fa-align-right" title="align right"></i>
-              <!-- <i class="far fa-file-audio"></i> -->
+              
+              <i class="fas fa-align-center" title="text align"></i>
+              
               <i class="fas fa-check" @click="saveNote" title="save note"></i>
             </div>
+
             <input v-model.lazy.trim="newTodo" @keyup.enter="addTodo(newTodo, note)" 
             ref="newTodo" type="text" placeholder="Type a new Todo and press ENTER">
-
-            <input v-if="isGetImg" v-model.lazy="note.image" @keyup.enter="" type="text" ref="img" placeholder="Paste your picture url">
+            <div v-if="isGetImg">
+              <input  v-model.lazy="note.image" @keyup.enter="" type="text" 
+              ref="img" placeholder="Paste your picture url">
+              <input type="file" @change="uploadFile($event)" value="myPic.jpg">
+            </div>
         </form>
     </section>
     `,
@@ -60,11 +72,14 @@ export default {
     return {
       isGetImg: false,
       note: { text: "" },
-      newTodo: ""
-      // styleObject: {
-      //   color: 'red',
-      //   backgroundColor: 'yellow'
-      // }
+      newTodo: "",
+      styleObject: {
+        backgroundColor: '#ffffff',
+        fontFamily: 'Impact, Charcoal, sans-serif',
+        color: '#000000',
+        fontSize: '12px',
+        textAlign: 'left'
+      }
     };
   },
   created() {
@@ -72,12 +87,14 @@ export default {
     if (noteId) {
       noteService.getById(noteId).then(note => {
         this.note = note;
+        this.styleObject = note.style;
       });
     }
   },
   methods: {
     saveNote() {
       console.log(this.note);
+      this.saveStyle();
       noteService.saveNote(this.note).then(() => {
         console.log("Saved!");
         busService.$emit(USR_MSG_DISPLAY, {
@@ -91,25 +108,29 @@ export default {
       this.isGetImg = true;
     },
     deleteTodo(todoIdx) {
-      // const noteIdx = noteService.getById(this.$route.params.noteId);
-      noteService.deleteTodo(this.note.id, todoIdx).then(note => {
-        this.note = note;
-      });
+      this.note = noteService.deleteTodo(this.note, todoIdx);
     },
     moveTodo(todoIdx, whereTo) {
-      noteService.moveTodo(this.note.id, todoIdx, whereTo).then(note => {
-        this.note = note;
-      });
+      this.note = noteService.moveTodo(this.note, todoIdx, whereTo);
     },
     addTodo(newTodo, note) {
       if (!this.newTodo) return;
       this.note = noteService.addTodo(newTodo, note);
       this.$router.push(`/note/edit/${note.id}`);
       this.$refs.newTodo.value = "";
+    },
+    saveStyle() {
+      this.note.style = this.styleObject;
+    },
+    uploadFile(event){
+      let file = event.target.files[0];
+      let imageURL = URL.createObjectURL(file)
+      this.note.image = imageURL;
     }
   },
   mounted() {
     this.$refs.text.focus();
+
   },
   components: {
     noteImg,

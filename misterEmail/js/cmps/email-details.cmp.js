@@ -37,7 +37,7 @@ export default {
 
         <router-link v-if="!isFullScreen":to="'/email/' + email.id">
           <button class="btn btn-bright">
-            <img src="../../misterEmail/img/fullScreen.png">
+            <img src="~/../../misterEmail/img/fullScreen.png">
           </button>
         </router-link>
         

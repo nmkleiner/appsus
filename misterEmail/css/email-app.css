@@ -1,8 +1,11 @@
 
 .email-app header {
     background-color: black;
-    padding-bottom: 5px; 
-    height: 5vh;
+}
+
+.email-app header .app-name {
+    color: rgb(126, 126, 0);
+    padding: 10px 0 10px 20px;
 }
 
 .email-app .sub-header {

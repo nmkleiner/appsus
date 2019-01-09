@@ -10,19 +10,8 @@ import emailService from "../services/email.service.js";
 export default {
   template: `
     <section class="email-app d-flex flex-column justify-content-center">
-        <header class="d-flex justify-content-between">
-        <div class="btns-container">
-          <router-link to="/">
-              <div class="btn btn-sm btn-dark" @click="backToAppsus">
-                <i class="fas fa-arrow-circle-left"></i>
-              </div>
-            </router-link>
-            <router-link   to="/note">
-              <div class="btn btn-sm btn-dark" @click="backToAppsus">
-                Go To Notes
-              </div>
-          </router-link>
-        </div>  
+        <header>
+        <h4 class="app-name">Email-app</h4>
         </header>
         <div class="sub-header d-flex flex-wrap">
           <email-filter @filtered="setFilter"></email-filter>
